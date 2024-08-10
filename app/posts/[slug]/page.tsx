@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { getAllPosts, getPostBySlug } from '@/lib/posts'
+import { getPosts, getPostBySlug } from '@/lib/posts'
 
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import MDXContent from '@/components/mdx-content'
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts()
+  const posts = await getPosts()
   const slugs = posts.map(post => ({ slug: post.slug }))
 
   return slugs
@@ -42,7 +42,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         )}
 
         <header>
-          <h1 className='text-3xl font-bold'>{title}</h1>
+          <h1 className='title'>{title}</h1>
           <p className='mt-1 text-sm text-muted-foreground'>
             {author} / {publishedAt}
           </p>
