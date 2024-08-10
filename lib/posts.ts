@@ -5,11 +5,11 @@ import matter from 'gray-matter'
 const rootDirectory = path.join(process.cwd(), 'content', 'posts')
 
 export type Post = {
-  metadata: Metadata
+  metadata: PostMetadata
   content: string
 }
 
-export type Metadata = {
+export type PostMetadata = {
   title?: string
   summary?: string
   image?: string
@@ -25,7 +25,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return { metadata: { ...data, slug }, content }
 }
 
-export async function getPosts(limit?: number): Promise<Metadata[]> {
+export async function getPosts(limit?: number): Promise<PostMetadata[]> {
   const files = fs.readdirSync(rootDirectory)
 
   const posts = files
@@ -45,7 +45,7 @@ export async function getPosts(limit?: number): Promise<Metadata[]> {
   return posts
 }
 
-export function getPostMetadata(filepath: string): Metadata {
+export function getPostMetadata(filepath: string): PostMetadata {
   const slug = filepath.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, filepath)
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
