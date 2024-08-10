@@ -3,19 +3,23 @@ import Image from 'next/image'
 
 import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
-import { getPosts, getPostBySlug } from '@/lib/posts'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
+import { getProjectBySlug, getProjects } from '@/lib/projects'
 
 export async function generateStaticParams() {
-  const posts = await getPosts()
-  const slugs = posts.map(post => ({ slug: post.slug }))
+  const projects = await getProjects()
+  const slugs = projects.map(project => ({ slug: project.slug }))
 
   return slugs
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+export default async function Project({
+  params
+}: {
+  params: { slug: string }
+}) {
   const { slug } = params
-  const { metadata, content } = await getPostBySlug(slug)
+  const { metadata, content } = await getProjectBySlug(slug)
 
   const { title, image, author, publishedAt } = metadata
 
@@ -23,11 +27,11 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <section className='pb-24 pt-32'>
       <div className='container max-w-3xl'>
         <Link
-          href='/posts'
+          href='/projects'
           className='mb-8 inline-flex items-center gap-2 text-sm font-light text-muted-foreground transition-colors hover:text-foreground'
         >
           <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to posts</span>
+          <span>Back to projects</span>
         </Link>
 
         {image && (
