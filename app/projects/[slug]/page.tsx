@@ -5,6 +5,7 @@ import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import { getProjectBySlug, getProjects } from '@/lib/projects'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
   const projects = await getProjects()
@@ -19,8 +20,13 @@ export default async function Project({
   params: { slug: string }
 }) {
   const { slug } = params
-  const { metadata, content } = await getProjectBySlug(slug)
+  const project = await getProjectBySlug(slug)
 
+  if (!project) {
+    notFound()
+  }
+
+  const { metadata, content } = project
   const { title, image, author, publishedAt } = metadata
 
   return (
