@@ -16,9 +16,9 @@ export async function sendEmail(data: ContactFormInputs) {
     return { error: result.error.format() }
   }
 
-  const { name, email, message } = result.data
   try {
-    await resend.emails.send({
+    const { name, email, message } = result.data
+    const { data, error } = await resend.emails.send({
       from: 'hello@hamedbahram.io',
       to: [email],
       cc: ['hello@hamedbahram.io'],
@@ -26,6 +26,11 @@ export async function sendEmail(data: ContactFormInputs) {
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       react: ContactFormEmail({ name, email, message })
     })
+
+    if (!data || error) {
+      throw new Error('Failed to send email')
+    }
+
     return { success: true }
   } catch (error) {
     return { error }
@@ -39,7 +44,21 @@ export async function subscribe(data: NewsletterFormInputs) {
     return { error: result.error.format() }
   }
 
-  const { email } = result.data
-  // TODO: subscribe the user to the newsletter
-  return { success: true }
+  try {
+    const { email } = result.data
+    const { data, error } = await resend.contacts.create({
+      email: email,
+      audienceId: process.env.RESEND_AUDIENCE_ID as string
+    })
+
+    if (!data || error) {
+      throw new Error('Failed to subscribe')
+    }
+
+    // TODO: Send a welcome email
+
+    return { success: true }
+  } catch (error) {
+    return { error }
+  }
 }
