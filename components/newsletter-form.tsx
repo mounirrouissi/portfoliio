@@ -46,7 +46,7 @@ export default function NewsletterForm() {
           <div>
             <h2 className='text-2xl font-bold'>Subscribe to my newsletter</h2>
             <p className='text-muted-foreground'>
-              Get updates on my works and projects.
+              Get updates on my work and projects.
             </p>
           </div>
 
