@@ -86,10 +86,12 @@ export default function Footer() {
               <a
                 key={item.name}
                 href={item.href}
+                target='_blank'
+                rel='noreferrer noopener'
                 className='text-muted-foreground hover:text-foreground'
               >
                 <span className='sr-only'>{item.name}</span>
-                <item.icon aria-hidden='true' className='h-6 w-6' />
+                <item.icon aria-hidden='true' className='h-5 w-5' />
               </a>
             ))}
           </div>

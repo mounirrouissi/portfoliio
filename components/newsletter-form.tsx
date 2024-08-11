@@ -42,13 +42,14 @@ export default function NewsletterForm() {
   return (
     <section>
       <Card className='rounded-lg border-0 dark:border'>
-        <CardContent className='flex flex-col gap-8 pt-8 md:flex-row'>
+        <CardContent className='flex flex-col gap-8 pt-6 md:flex-row md:justify-between md:pt-8'>
           <div>
-            <h2 className='text-2xl font-bold'>Subscribe my newsletter</h2>
+            <h2 className='text-2xl font-bold'>Subscribe to my newsletter</h2>
             <p className='text-muted-foreground'>
               Get updates on my works and projects.
             </p>
           </div>
+
           <form
             onSubmit={handleSubmit(processForm)}
             className='flex flex-col items-start gap-3'
