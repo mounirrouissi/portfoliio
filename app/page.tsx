@@ -2,6 +2,7 @@ import Intro from '@/components/intro'
 import NewsletterForm from '@/components/newsletter-form'
 import RecentPosts from '@/components/recent-posts'
 import RecentProjects from '@/components/recent-projects'
+import Stack from '@/components/TechStack'
 
 export default function Home() {
   return (
@@ -11,6 +12,8 @@ export default function Home() {
 
         <RecentPosts />
         <RecentProjects />
+        <Stack />
+
 
         <NewsletterForm />
       </div>
