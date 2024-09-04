@@ -2,7 +2,7 @@
 import React, { createContext } from 'react';
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import authorImage from '@/public/images/authors/hamed.png'
+import authorImage from '@/public/images/authors/mr.jpg'
 export default function Intro() {
   return (
     <section className='flex flex-col-reverse items-start gap-x-10 gap-y-8 pb-24 md:flex-row md:items-center'>
@@ -12,12 +12,14 @@ export default function Intro() {
         transition={{ duration: 0.5 }}
         className='mt-2 flex-1 md:mt-0'
       >
-        <h1 className='title no-underline text-4xl font-bold mb-4'>Hey, I'm Mounir.</h1>
-        <p className='mt-3 font-light text-muted-foreground text-lg leading-relaxed'>
-          I'm a software engineer based in Tunis, Tunisia. I'm
-          passionate about learning new technologies and sharing knowledge with
-          others.
-        </p>
+        <h1 className='title no-underline text-4xl font-bold mb-4'>Hey, I&apos;m Mounir.</h1>
+        <h1 className='title no-underline text-4xl font-bold mb-4'>Hey, I&apos;m Mounir.</h1>
+<p className='mt-3 font-light text-muted-foreground text-lg leading-relaxed'>
+  I&apos;m a software engineer based in Tunis, Tunisia. I&apos;m
+  passionate about learning new technologies and sharing knowledge with
+  others.
+</p>
+
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
