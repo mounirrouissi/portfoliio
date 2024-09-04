@@ -55,7 +55,27 @@ export async function subscribe(data: NewsletterFormInputs) {
       throw new Error('Failed to subscribe')
     }
 
-    // TODO: Send a welcome email
+    // Send a welcome email
+    const WelcomeEmail = ({ email }: { email: string }) => {
+      return `
+        <div>
+          <h1>Welcome to Our Newsletter!</h1>
+          <p>Thank you for subscribing, ${email}!</p>
+          <p>We're excited to have you on board and look forward to sharing our latest updates with you.</p>
+        </div>
+      `;
+    }
+
+    const { data: welcomeEmailData, error: welcomeEmailError } = await resend.emails.send({
+      from: 'rouissimounir@outlook.com',
+      to: [email],
+      subject: 'Welcome to Our Newsletter!',
+      react: WelcomeEmail({ email })
+    })
+
+    if (!welcomeEmailData || welcomeEmailError) {
+      console.error('Failed to send welcome email', welcomeEmailError)
+    }
 
     return { success: true }
   } catch (error) {
