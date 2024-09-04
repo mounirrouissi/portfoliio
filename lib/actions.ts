@@ -12,13 +12,14 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export async function sendEmail(data: ContactFormInputs) {
   const result = ContactFormSchema.safeParse(data)
 
-  if (result.error) {
+  if (!result.success) {
     return { error: result.error.format() }
   }
 
   try {
     const { name, email, message } = result.data
-    const { data, error } = await resend.emails.send({
+
+    const emailResult = await resend.emails.send({
       from: 'rouissimounir@outlook.com',
       to: [email],
       cc: ['rouissimounir@outlook.com'],
@@ -27,58 +28,59 @@ export async function sendEmail(data: ContactFormInputs) {
       react: ContactFormEmail({ name, email, message })
     })
 
-    if (!data || error) {
+    if (!emailResult || emailResult.error) {
       throw new Error('Failed to send email')
     }
 
     return { success: true }
-  } catch (error) {
-    return { error }
+  } catch (error: any) {
+    console.error('Error sending email:', error)
+    return { error: error.message || 'An error occurred while sending the email' }
   }
 }
 
 export async function subscribe(data: NewsletterFormInputs) {
   const result = NewsletterFormSchema.safeParse(data)
 
-  if (result.error) {
+  if (!result.success) {
     return { error: result.error.format() }
   }
 
   try {
     const { email } = result.data
-    const { data, error } = await resend.contacts.create({
+
+    const contactResult = await resend.contacts.create({
       email: email,
       audienceId: process.env.RESEND_AUDIENCE_ID as string
     })
 
-    if (!data || error) {
+    if (!contactResult || contactResult.error) {
       throw new Error('Failed to subscribe')
     }
 
     // Send a welcome email
-    const WelcomeEmail = ({ email }: { email: string }) => {
-      return `
-        <div>
-          <h1>Welcome to Our Newsletter!</h1>
-          <p>Thank you for subscribing, ${email}!</p>
-          <p>We're excited to have you on board and look forward to sharing our latest updates with you.</p>
-        </div>
-      `;
-    }
+    const WelcomeEmail = ({ email }: { email: string }) => (
+      `<div>
+        <h1>Welcome to Our Newsletter!</h1>
+        <p>Thank you for subscribing, ${email}!</p>
+        <p>We're excited to have you on board and look forward to sharing our latest updates with you.</p>
+      </div>`
+    )
 
-    const { data: welcomeEmailData, error: welcomeEmailError } = await resend.emails.send({
+    const welcomeEmailResult = await resend.emails.send({
       from: 'rouissimounir@outlook.com',
       to: [email],
       subject: 'Welcome to Our Newsletter!',
       react: WelcomeEmail({ email })
     })
 
-    if (!welcomeEmailData || welcomeEmailError) {
-      console.error('Failed to send welcome email', welcomeEmailError)
+    if (!welcomeEmailResult || welcomeEmailResult.error) {
+      console.error('Failed to send welcome email:', welcomeEmailResult?.error)
     }
 
     return { success: true }
-  } catch (error) {
-    return { error }
+  } catch (error: any) {
+    console.error('Error subscribing:', error)
+    return { error: error.message || 'An error occurred while subscribing' }
   }
 }
