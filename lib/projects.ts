@@ -30,6 +30,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 }
 
 export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
+  console.log("root directory", rootDirectory)
   const files = fs.readdirSync(rootDirectory)
 
   const projects = files

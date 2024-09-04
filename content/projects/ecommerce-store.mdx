@@ -1,57 +1,67 @@
 ---
-  title: Ecommerce Store
-  summary: A full-stack ecommerce store built with NextJs and Stripe.
-  image: /images/projects/ecommerce-store.jpg
-  author: 'Hamed Bahram'
-  publishedAt: '2024-08-04'
+title: Bookstore Ecommerce
+summary: A full-stack bookstore ecommerce application built with Spring Boot and Angular.
+image: /images/projects/ng-ecom.png
+author: 'Rouissi Mounir'
+publishedAt: '2024-08-04'
 ---
 
-This is a full-stack ecommerce store built with NextJs and Stripe. It uses the
-`@stripe/stripe-js` package to handle payments and the `@next/bundle-analyzer`
-package to analyze the bundle size.
+This is a full-stack bookstore ecommerce application built with Spring Boot and Angular. It implements security features to protect user data and manage authentication.
 
 ## Features
 
-- **Stripe Payments**: Accept payments using the Stripe API.
-- **Product Catalog**: Display products in a grid layout.
-- **Shopping Cart**: Add products to the shopping cart and checkout.
-- **User Authentication**: Allow users to sign up and log in.
-- **Order History**: View order history and track shipments.
+- **Product Catalog**: Display books in a grid layout.
+- **Shopping Cart**: Add books to the shopping cart.
+- **User Authentication**: Allow users to sign up and log in securely.
+- **Order History**: View order history.
+- **Book Management**: Admin interface for managing book inventory.
 
 ## Technologies
 
-- **NextJs**: A React framework for building static and dynamic websites.
-- **Stripe**: A payment processing platform for online businesses.
-- **Tailwind CSS**: A utility-first CSS framework for building custom designs.
-- **Vercel**: A cloud platform for static sites and serverless functions.
+- **Spring Boot**: A Java-based framework for building robust backend services.
+- **Angular**: A TypeScript-based web application framework for building dynamic frontend applications.
+- **Spring Security**: Provides authentication and authorization functionalities.
+- **MySQL**: A relational database for storing application data.
+- **Bootstrap**: A CSS framework for responsive and mobile-first frontend design.
 
 ## Getting Started
 
-To get started with this project, you can clone the repository and install the
-dependencies:
+To get started with this project, you can clone the repository and set up the backend and frontend:
 
-```bash
-git clone
-cd ecommerce-store
+
+git clone https://github.com/yourusername/bookstore-ecommerce.git
+cd bookstore-ecommerce
+
+
+For the backend:
+
+
+cd backend
+./mvnw spring-boot:run
+
+
+For the frontend:
+
+
+cd frontend
 npm install
-```
+ng serve
 
-Once the dependencies are installed, you can run the development server:
 
-```bash
-npm run dev
-```
+The backend server will start at `http://localhost:8080` and the frontend development server will start at `http://localhost:4200`.
 
-The development server will start at `http://localhost:3000`.
+## Security
+
+This application implements Spring Security for authentication and authorization. It includes:
+
+- User registration and login
+- Role-based access control
+- JWT (JSON Web Token) for stateless authentication
 
 ## Deployment
 
-To deploy this project, you can use Vercel. You can link your GitHub repository
-to Vercel and deploy the project with a single click.
+To deploy this project, you can use a cloud platform that supports Java applications for the backend (such as Heroku or AWS) and a static hosting service for the Angular frontend (such as Netlify or Firebase Hosting).
 
 ## Conclusion
 
-This ecommerce store is a great example of how you can build a full-stack
-application with NextJs and Stripe. By integrating the Stripe API with NextJs,
-you can create a seamless shopping experience for your customers and manage
-payments securely and efficiently.
+This bookstore ecommerce application demonstrates how to build a secure, full-stack ecommerce platform using Spring Boot and Angular. It provides a solid foundation for managing a bookstore's inventory and customer interactions, with a focus on security and user experience.

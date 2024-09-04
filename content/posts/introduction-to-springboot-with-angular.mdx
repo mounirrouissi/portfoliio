@@ -1,0 +1,82 @@
+---
+  title: Introduction to Spring Boot with Angular
+  summary: Spring Boot with Angular is a powerful combination for building robust and scalable full-stack applications. This post will introduce you to the basics of Spring Boot with Angular and provide a simple tutorial.
+  image: /images/posts/introduction-to-springboot-with-angular.webp
+  author: ' Mounir Rouissi'
+  publishedAt: '2024-08-08'
+---
+
+Spring Boot with Angular is a powerful combination for building robust and scalable full-stack applications. This
+post will introduce you to the basics of Spring Boot with Angular and provide a simple tutorial.
+
+## What is Spring Boot with Angular?
+
+Spring Boot with Angular is a combination of the Spring Boot framework for building robust backend services and the Angular framework for building dynamic frontend applications. This
+means that you can use Spring Boot to build robust backend services and Angular to build dynamic frontend applications that interact with the backend services.
+
+```
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+```
+
+## Why use Spring Boot with Angular?
+
+Spring Boot with Angular is a great way to build scalable and maintainable full-stack applications. By using Spring Boot with Angular, you can easily
+build services that can handle high volumes of requests and scale horizontally, while also providing a dynamic and responsive user interface.
+
+## How to use Spring Boot with Angular
+
+To use Spring Boot with Angular, you need to create a new Spring Boot project for the backend and a new Angular project for the frontend. For the backend, you can use the `spring-boot-starter-web` dependency to enable web support in your project.
+
+For the frontend, you can use the Angular CLI to create a new Angular project. Once you have both projects set up, you can start building your full-stack application by creating RESTful APIs in the backend and consuming them in the frontend using Angular's HTTP client.
+
+Here's a simple example of how you can create a RESTful API in Spring Boot to return a list of books:
+
+```java
+@RestController
+@RequestMapping("/api/books")
+public class BookController {
+
+    @GetMapping
+    public List<Book> getBooks() {
+        // Assuming there's a service to fetch books
+        return bookService.getBooks();
+    }
+}
+```
+
+And here's an example of how you can consume this API in Angular:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-book-list',
+  templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.css']
+})
+export class BookListComponent implements OnInit {
+  books: any[];
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.http.get('http://localhost:8080/api/books')
+      .subscribe(data => {
+        this.books = data;
+      });
+  }
+}
+```
+
+## Conclusion
+
+Spring Boot with Angular is a powerful combination for building robust and scalable full-stack applications. This
+post has introduced you to the basics of Spring Boot with Angular and provided a simple tutorial on how to get started with building a full-stack application using these technologies.

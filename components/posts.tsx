@@ -7,7 +7,7 @@ export default function Posts({ posts }: { posts: PostMetadata[] }) {
   return (
     <ul className='flex flex-col gap-8'>
       {posts.map(post => (
-        <li key={post.slug}>
+        <li key={post.slug} className='border-b border-gray-200 py-4'>
           <Link
             href={`/posts/${post.slug}`}
             className='flex flex-col justify-between gap-x-4 gap-y-1 sm:flex-row'
