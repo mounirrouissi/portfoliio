@@ -13,7 +13,6 @@ export default function Intro() {
         className='mt-2 flex-1 md:mt-0'
       >
         <h1 className='title no-underline text-4xl font-bold mb-4'>Hey, I&apos;m Mounir.</h1>
-        <h1 className='title no-underline text-4xl font-bold mb-4'>Hey, I&apos;m Mounir.</h1>
 <p className='mt-3 font-light text-muted-foreground text-lg leading-relaxed'>
   I&apos;m a software engineer based in Tunis, Tunisia. I&apos;m
   passionate about learning new technologies and sharing knowledge with
