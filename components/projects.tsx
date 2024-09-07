@@ -31,6 +31,7 @@ export default function Projects({
               <h2 className='title line-clamp-1 text-xl no-underline'>
                 {project.title}
               </h2>
+              
               <p className='line-clamp-1 text-sm text-muted-foreground'>
                 {project.summary}
               </p>

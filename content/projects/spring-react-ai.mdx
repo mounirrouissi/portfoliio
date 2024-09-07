@@ -1,7 +1,8 @@
 ---
-  title: Building a Full-Stack Project with Spring, React, and Open AI API
+  title: spring react ai
   summary: This post will guide you through building a full-stack project using Spring Boot for the backend, React for the frontend, and the Open AI API for AI capabilities.
   image: /images/projects/spring-ai.png
+  githubLink: https://github.com/mounirrouissi/spring-react-ai
   author: ' Mounir Rouissi'
   publishedAt: '2024-08-10'
 ---
@@ -12,7 +13,7 @@ Building a full-stack project with Spring, React, and the Open AI API is a great
 
 The project we will be building is a simple chatbot that uses the Open AI API to generate responses to user queries. The backend will be built using Spring Boot, which will handle the API calls to the Open AI API and provide a RESTful API for the frontend to consume. The frontend will be built using React, which will handle user input and display the chatbot's responses.
 
-```java
+
 @SpringBootApplication
 public class Application {
 
@@ -21,7 +22,7 @@ public class Application {
     }
 
 }
-```
+
 
 ## Why use Spring, React, and Open AI API?
 
@@ -33,9 +34,11 @@ To use Spring, React, and the Open AI API, you need to create a new Spring Boot 
 
 For the frontend, you can use the React CLI to create a new React project. Once you have both projects set up, you can start building your full-stack application by creating RESTful APIs in the backend to interact with the Open AI API and consuming them in the frontend using React's HTTP client.
 
+To get started, you can check out the example project at https://github.com/mounirrouissi/spring-ai/tree/master.
+
 Here's a simple example of how you can create a RESTful API in Spring Boot to generate a response from the Open AI API:
 
-```java
+
 @RestController
 @RequestMapping("/api/chat")
 public class ChatController {
@@ -46,11 +49,11 @@ public class ChatController {
         return openAIService.generateResponse(query);
     }
 }
-```
+
 
 And here's an example of how you can consume this API in React:
 
-```typescript
+
 import { Component, useState } from 'react';
 import { HttpClient } from '@angular/common/http';
 
@@ -91,7 +94,7 @@ class ChatComponent extends Component {
     );
   }
 }
-```
+
 
 ## Conclusion
 
