@@ -2,15 +2,11 @@
 title: Spring Boot Microservices
 summary: A complete project on building microservices with Spring Boot.
 image: /images/projects/spring-boot-microservices.png
-githubLink: https://github.com/mounirrouissi/spring-react-ai
 author: 'Sai Upadhyayula'
 publishedAt: '2024-09-15'
 ---
 
 This repository contains the latest source code of the Spring Boot microservices.
-
-## Getting Started
-
 To get started with this project, you can clone the repository from [https://github.com/mounirrouissi/microservices-project/tree/master](https://github.com/mounirrouissi/microservices-project/tree/master).
 
 ## Services Overview
@@ -51,19 +47,19 @@ Make sure you have the following installed on your machine:
 Run the following commands to start the frontend application:
 
 
-
+```bash
 cd frontend
 npm install
 npm run start
-
+```
 
 How to Build the Backend Services
 Run the following command to build and package the backend services into a Docker container:
 
-
+```bash
 mvn spring-boot:build-image -DdockerPassword=<your-docker-account-password>
 
-
+```
 
 This command will build and package the services into a Docker container and push it to your Docker Hub account.
 
@@ -77,10 +73,10 @@ Start Kind Cluster
 Run the k8s/kind/create-kind-cluster.sh script to create the Kind Kubernetes cluster:
 
 
-
+```bash
 ./k8s/kind/create-kind-cluster.sh
 
-
+```
 
 This will create a Kind cluster and pre-load all the required Docker images into the cluster, saving you time downloading the images when you deploy the application.
 
@@ -88,32 +84,34 @@ Deploy the Infrastructure
 Run the k8s/manifests/infrastructure.yaml file to deploy the infrastructure:
 
 
-
+```bash
 kubectl apply -f k8s/manifests/infrastructure.yaml
 
-
+```
 
 
 Deploy the Services
 Run the k8s/manifests/applications.yaml file to deploy the services:
 
 
-
+```bash
 kubectl apply -f k8s/manifests/applications.yaml
 
-
+```
 
 Access the Keycloak Admin Console
 To access the Keycloak admin console, you need to port-forward the Keycloak service to your local machine:
 
 
-
+```bash
 kubectl port-forward svc/keycloak 8080:8080
 
-
+```
 
 Access the Grafana Dashboards
 To access the Grafana dashboards, you need to port-forward the Grafana service to your local machine:
 
-
+```bash
 kubectl port-forward svc/grafana 3000:3000
+
+```
